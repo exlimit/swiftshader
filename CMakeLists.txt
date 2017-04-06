@@ -90,6 +90,9 @@ macro(set_target_export_map TARGET DIR)
         # with each functions being in its section, to reduce the
         # binary size.
         set_target_properties(${TARGET} PROPERTIES LINK_FLAGS "${LINKFLAGS} -Wl,--hash-style=both,--version-script=${DIR}/exports.map,--gc-sections,--no-undefined")
+    elseif(APPLE)
+        set_target_properties(${TARGET} PROPERTIES MACOSX_RPATH TRUE)
+        set_target_properties(${TARGET} PROPERTIES LINK_FLAGS "${LINKFLAGS} -Wl,-exported_symbols_list,${DIR}/exports.list,-dead_strip,-x,-undefined,dynamic_lookup")
     endif()
 endmacro()
 
