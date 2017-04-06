@@ -162,8 +162,8 @@ else()
 
     # For distribution it is more important to be slim than super optimized
     # so even in Release we use only -O2
-    set_cpp_flag("-O2 -Os" RELEASE)
-    set_cpp_flag("-O2 -Os" RELWITHDEBINFO)
+    set_cpp_flag("-O3" RELEASE)
+    set_cpp_flag("-O3" RELWITHDEBINFO)
 
     set_cpp_flag("-DNDEBUG" RELEASE)
     set_cpp_flag("-DNDEBUG" RELWITHDEBINFO)
